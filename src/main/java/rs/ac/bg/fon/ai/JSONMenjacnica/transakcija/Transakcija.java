@@ -1,6 +1,10 @@
 package rs.ac.bg.fon.ai.JSONMenjacnica.transakcija;
 
+import java.io.FileWriter;
 import java.util.Date;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class Transakcija {
 
@@ -56,7 +60,17 @@ public class Transakcija {
 				+ pocetniIznos + ", konvertovaniIznos=" + konvertovaniIznos + ", datumTransakcije=" + datumTransakcije
 				+ "]";
 	}
-	
-	
+
+	public void serializeToJson() {
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+		try (FileWriter writer = new FileWriter("output/prva_transakcija.json")) {
+
+			gson.toJson(this, writer);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

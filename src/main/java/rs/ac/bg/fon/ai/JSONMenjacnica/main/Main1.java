@@ -1,6 +1,7 @@
 package rs.ac.bg.fon.ai.JSONMenjacnica.main;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -43,9 +44,9 @@ public class Main1 {
 
 				
 				//naci timestamp i mapirati u Date
-				long timestamp = result.get("timestamp").getAsLong();
-				Date time = new Date(timestamp * 1000);
-				t.setDatumTransakcije(time);
+				//long timestamp = result.get("timestamp").getAsLong();
+				//Date time = new Date(timestamp * 1000);
+				t.setDatumTransakcije(new Date());
 				
 				String currencies = t.getIzvornaValuta() +  t.getKrajnjaValuta();
 				
@@ -55,6 +56,12 @@ public class Main1 {
 				t.setKonvertovaniIznos(t.getPocetniIznos() * exchangeRate);
 								
 				System.out.println(t);
+				
+				File output = new File("output");
+				if(!output.exists())
+					output.mkdir();
+				
+				t.serializeToJson();
 				
 			} else {
 				System.out.println("Greska kod konekcije");
