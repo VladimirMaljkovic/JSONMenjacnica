@@ -50,4 +50,13 @@ public class Transakcija {
 		this.datumTransakcije = datumTransakcije;
 	}
 
+	@Override
+	public String toString() {
+		return "Transakcija -> izvornaValuta=" + izvornaValuta + ", krajnjaValuta=" + krajnjaValuta + ", pocetniIznos="
+				+ pocetniIznos + ", konvertovaniIznos=" + konvertovaniIznos + ", datumTransakcije=" + datumTransakcije
+				+ "]";
+	}
+	
+	
+
 }

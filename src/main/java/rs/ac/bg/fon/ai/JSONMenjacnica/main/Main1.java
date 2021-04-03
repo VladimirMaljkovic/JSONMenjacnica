@@ -53,8 +53,8 @@ public class Main1 {
 				double exchangeRate = result.get("quotes").getAsJsonObject().get(currencies).getAsDouble();
 				
 				t.setKonvertovaniIznos(t.getPocetniIznos() * exchangeRate);
-				
-				System.out.println(t.getPocetniIznos() + " " + t.getIzvornaValuta() + " je " + t.getKonvertovaniIznos() + " " + t.getKrajnjaValuta());
+								
+				System.out.println(t);
 				
 			} else {
 				System.out.println("Greska kod konekcije");
