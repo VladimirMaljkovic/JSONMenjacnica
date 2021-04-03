@@ -2,9 +2,11 @@ package rs.ac.bg.fon.ai.JSONMenjacnica.transakcija;
 
 import java.io.FileWriter;
 import java.util.Date;
+import java.util.LinkedList;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 
 public class Transakcija {
 
@@ -71,6 +73,21 @@ public class Transakcija {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void serializeMultipleToJson(LinkedList<Transakcija> transakcije) {
+		
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+		try (FileWriter writer = new FileWriter("output/ostale_transakcije.json")) {
+
+			gson.toJson(transakcije, writer);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 }
